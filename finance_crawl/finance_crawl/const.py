@@ -1,0 +1,4 @@
+# -*- coding: utf-8 -*-
+CONST_START_YEAR = 2015
+CONST_END_YEAR = 2017
+CONST_STOCK_ID_STR = '000300,000016,000905'    # 000300: hushen300,  000016:shangzheng50,  000905:zhongzheng500

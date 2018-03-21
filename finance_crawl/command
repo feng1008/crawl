@@ -1,0 +1,8 @@
+
+scrapy crawl sina_crawl
+cat data/sina_data | sort | sed -i '1i\price_date,open_price,highest_price,lowest_price,close_price' >data/mydata
+
+
+scrapy crawl netease_crawl
+cat data/netease_data | sort | sed -i '1i\price_date,open_price,highest_price,lowest_price,close_price' >data/mydata
+

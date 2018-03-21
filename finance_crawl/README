@@ -1,0 +1,30 @@
+scrapy history stock info from sina or netease:
+
+sina url example: http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_MarketHistory/stockid/000016/type/S.phtml?year=2017&jidu=1
+
+netease url example: http://quotes.money.163.com/trade/lsjysj_zhishu_000016.html?year=2017&season=1
+
+
+
+requiremenst:
+scrapy :     		pip install scrapy
+BeautifulSoup:		pip install beautifulsoup4
+
+
+
+run steps:
+step 1, go to finance_crawl/const.py to set the start_year, end_year and stock_id_str  (if pass parameters from commands, ignore it.)
+
+step 2, crawl data, at the rootpath, type 
+	"scrapy crawl sina_crawl"    (or "scrapy crawl netease_crawl" if netease address is used)
+
+	or pass parameters from commands:
+	"scrapy crawl -a start_year=2015 -a end_year=2017 -a stockid_str=000016,000300,000905 sina_crawl"
+	("scrapy crawl -a start_year=2015 -a end_year=2017 -a stockid_str=000016,000300,000905 netease_crawl")
+		
+step 3, revise data (sort and add header)
+	cat data/sina_data | sort | sed -i '1i\price_date,open_price,highest_price,lowest_price,close_price' >data/mydata
+
+	if netease address is used, use:
+
+	cat data/netease_data | sort | sed -i '1i\price_date,open_price,highest_price,lowest_price,close_price' >data/mydata
